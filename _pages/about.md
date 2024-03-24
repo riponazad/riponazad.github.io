@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am pursuing a PhD in ultrasound medical imaging, focusing on leveraging computer vision and deep learning techniques.
+I am pursuing a PhD in ultrasound medical imaging at the department of circulation and medical imaging (ISB), focusing on leveraging computer vision and deep learning techniques.
 
 Before joining ISB, I completed my master's degree in [Marine and Maritime Intelligent Robotics](https://www.master-mir.eu/) at the Department of Marine Technology, NTNU. This was an Erasmus Mundus Joint Master's Degree program jointly offered by [Université de Toulon](https://www.univ-tln.fr/) (UTLN) and NTNU. Following my first year at UTLN, I had the opportunity to work as a summer research student within the computer vision group at SINTEF Digital. During this time, my focus was on the 3D reconstruction of challenging objects using the Neural Radiance Field (NeRF) technique. Consequently, my master's thesis was also carried out within this group, where I delved into Multi-label Video Classification for Underwater Ship Inspection. My research specifically revolved around the investigation and analysis of multi-attention-based transformer and vision transformer models within the context of underwater environments for video understanding.
 
