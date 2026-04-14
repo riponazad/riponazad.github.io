@@ -1,0 +1,449 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Clip: ultrasound sector fan from top-right corner -->
+    <clipPath id="us-clip">
+      <polygon points="1920,0 850,840 1920,1080"/>
+    </clipPath>
+
+    <!-- Radial fill for fan interior -->
+    <radialGradient id="fan-fill" cx="1920" cy="0" r="1200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#64ffda" stop-opacity="0.05"/>
+      <stop offset="65%"  stop-color="#64ffda" stop-opacity="0.012"/>
+      <stop offset="100%" stop-color="#64ffda" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Sonar fill gradient from below-screen -->
+    <radialGradient id="sonar-fill" cx="960" cy="1350" r="950" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#a78bfa" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glow filter for key nodes / ECG peaks -->
+    <filter id="node-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Softer glow for ECG highlight -->
+    <filter id="soft-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!--  ECHOCARDIOGRAPHY SECTOR SCAN  (right half, apex at top-right)   -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- Sector area glow fill -->
+  <polygon points="1920,0 850,840 1920,1080" fill="url(#fan-fill)"/>
+
+  <!-- Sector boundary rays -->
+  <line x1="1920" y1="0" x2="850"  y2="840"  stroke="#64ffda" stroke-width="0.7" opacity="0.22"/>
+  <line x1="1920" y1="0" x2="1920" y2="1080" stroke="#64ffda" stroke-width="0.5" opacity="0.12"/>
+
+  <!-- Depth-zone concentric arcs (clipped to fan) -->
+  <g clip-path="url(#us-clip)" stroke="#64ffda" fill="none">
+    <circle cx="1920" cy="0" r="175"  stroke-width="0.6" opacity="0.26"/>
+    <circle cx="1920" cy="0" r="315"  stroke-width="0.6" opacity="0.23"/>
+    <circle cx="1920" cy="0" r="465"  stroke-width="0.6" opacity="0.20"/>
+    <circle cx="1920" cy="0" r="628"  stroke-width="0.6" opacity="0.18"/>
+    <circle cx="1920" cy="0" r="800"  stroke-width="0.5" opacity="0.15"/>
+    <circle cx="1920" cy="0" r="980"  stroke-width="0.5" opacity="0.12"/>
+    <circle cx="1920" cy="0" r="1170" stroke-width="0.5" opacity="0.08"/>
+  </g>
+
+  <!-- Radial scan lines within the fan -->
+  <!-- Fan spans ~90° (straight down) to ~142° toward (850,840) -->
+  <!-- Intermediate angles 100°,110°,120°,130° | length=1300 -->
+  <!-- 100°: dx=-226, dy=1281 | 110°: dx=-445, dy=1222 | 120°: dx=-650, dy=1126 | 130°: dx=-836, dy=996 -->
+  <g clip-path="url(#us-clip)" stroke="#64ffda" fill="none" stroke-width="0.45" opacity="0.09">
+    <line x1="1920" y1="0" x2="1694" y2="1281"/>
+    <line x1="1920" y1="0" x2="1475" y2="1222"/>
+    <line x1="1920" y1="0" x2="1270" y2="1126"/>
+    <line x1="1920" y1="0" x2="1084" y2="996"/>
+  </g>
+
+  <!-- Cardiac structure echoes (dashed paths = tissue interfaces) -->
+  <g clip-path="url(#us-clip)" stroke="#64ffda" fill="none">
+    <!-- Left-ventricular posterior wall  ~r=640 -->
+    <path d="M 1914 630 Q 1698 648 1518 552" stroke-width="1.3" opacity="0.34" stroke-dasharray="5 3"/>
+    <!-- Interventricular septum / LV anterior wall  ~r=465 -->
+    <path d="M 1917 455 Q 1762 468 1650 404" stroke-width="1.1" opacity="0.29" stroke-dasharray="4 3"/>
+    <!-- RV free wall hint  ~r=380 -->
+    <path d="M 1917 382 Q 1822 394 1774 355" stroke-width="0.8" opacity="0.20" stroke-dasharray="3 4"/>
+    <!-- Aortic valve ring -->
+    <circle cx="1872" cy="293" r="7" stroke-width="1.0" opacity="0.42"/>
+    <line x1="1872" y1="286" x2="1872" y2="300" stroke-width="0.8" opacity="0.42"/>
+    <!-- Mitral valve leaflets -->
+    <path d="M 1758 494 Q 1732 512 1706 494" stroke-width="1.2" opacity="0.40"/>
+  </g>
+
+  <!-- Ultrasound speckle (represents tissue scatter) -->
+  <g clip-path="url(#us-clip)" fill="#64ffda">
+    <circle cx="1812" cy="242" r="1.5" opacity="0.18"/>
+    <circle cx="1752" cy="292" r="1"   opacity="0.14"/>
+    <circle cx="1872" cy="342" r="1.5" opacity="0.19"/>
+    <circle cx="1702" cy="382" r="1"   opacity="0.13"/>
+    <circle cx="1792" cy="432" r="2"   opacity="0.22"/>
+    <circle cx="1652" cy="462" r="1.5" opacity="0.16"/>
+    <circle cx="1832" cy="502" r="1"   opacity="0.12"/>
+    <circle cx="1722" cy="547" r="1.5" opacity="0.19"/>
+    <circle cx="1602" cy="572" r="1"   opacity="0.14"/>
+    <circle cx="1682" cy="622" r="2"   opacity="0.23"/>
+    <circle cx="1862" cy="642" r="1"   opacity="0.10"/>
+    <circle cx="1572" cy="662" r="1.5" opacity="0.17"/>
+    <circle cx="1742" cy="702" r="1"   opacity="0.13"/>
+    <circle cx="1892" cy="732" r="1.5" opacity="0.10"/>
+    <circle cx="1522" cy="712" r="1"   opacity="0.15"/>
+    <circle cx="1642" cy="762" r="2"   opacity="0.18"/>
+    <circle cx="1802" cy="782" r="1"   opacity="0.10"/>
+    <circle cx="1592" cy="812" r="1.5" opacity="0.14"/>
+    <circle cx="1692" cy="842" r="1"   opacity="0.12"/>
+    <circle cx="1742" cy="262" r="1"   opacity="0.12"/>
+    <circle cx="1862" cy="172" r="1.5" opacity="0.20"/>
+    <circle cx="1782" cy="152" r="1"   opacity="0.15"/>
+    <circle cx="1902" cy="212" r="1.5" opacity="0.18"/>
+  </g>
+
+  <!-- Transducer origin (bright apex indicator) -->
+  <circle cx="1920" cy="0" r="3"  fill="#64ffda" opacity="0.65" filter="url(#node-glow)"/>
+  <circle cx="1920" cy="0" r="13" fill="none" stroke="#64ffda" stroke-width="0.9" opacity="0.28"/>
+  <circle cx="1920" cy="0" r="26" fill="none" stroke="#64ffda" stroke-width="0.5" opacity="0.14"/>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!--  DEEP NEURAL NETWORK  (left side, behind the hero text)          -->
+  <!--  5 layers × 6/5/5/4/3 nodes — fully connected adjacent layers   -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- Layer axis guidelines (dashed, very faint) -->
+  <g stroke="#64ffda" stroke-width="0.3" stroke-dasharray="2 10" opacity="0.07">
+    <line x1="130" y1="200" x2="130" y2="655"/>
+    <line x1="288" y1="215" x2="288" y2="655"/>
+    <line x1="448" y1="215" x2="448" y2="655"/>
+    <line x1="608" y1="215" x2="608" y2="655"/>
+    <line x1="768" y1="235" x2="768" y2="595"/>
+  </g>
+
+  <!-- L0→L1 connections (30) -->
+  <g stroke="#64ffda" stroke-width="0.4" opacity="0.055" fill="none">
+    <line x1="130" y1="235" x2="288" y2="255"/>
+    <line x1="130" y1="235" x2="288" y2="347"/>
+    <line x1="130" y1="235" x2="288" y2="439"/>
+    <line x1="130" y1="235" x2="288" y2="531"/>
+    <line x1="130" y1="235" x2="288" y2="623"/>
+    <line x1="130" y1="307" x2="288" y2="255"/>
+    <line x1="130" y1="307" x2="288" y2="347"/>
+    <line x1="130" y1="307" x2="288" y2="439"/>
+    <line x1="130" y1="307" x2="288" y2="531"/>
+    <line x1="130" y1="307" x2="288" y2="623"/>
+    <line x1="130" y1="379" x2="288" y2="255"/>
+    <line x1="130" y1="379" x2="288" y2="347"/>
+    <line x1="130" y1="379" x2="288" y2="439"/>
+    <line x1="130" y1="379" x2="288" y2="531"/>
+    <line x1="130" y1="379" x2="288" y2="623"/>
+    <line x1="130" y1="451" x2="288" y2="255"/>
+    <line x1="130" y1="451" x2="288" y2="347"/>
+    <line x1="130" y1="451" x2="288" y2="439"/>
+    <line x1="130" y1="451" x2="288" y2="531"/>
+    <line x1="130" y1="451" x2="288" y2="623"/>
+    <line x1="130" y1="523" x2="288" y2="255"/>
+    <line x1="130" y1="523" x2="288" y2="347"/>
+    <line x1="130" y1="523" x2="288" y2="439"/>
+    <line x1="130" y1="523" x2="288" y2="531"/>
+    <line x1="130" y1="523" x2="288" y2="623"/>
+    <line x1="130" y1="595" x2="288" y2="255"/>
+    <line x1="130" y1="595" x2="288" y2="347"/>
+    <line x1="130" y1="595" x2="288" y2="439"/>
+    <line x1="130" y1="595" x2="288" y2="531"/>
+    <line x1="130" y1="595" x2="288" y2="623"/>
+  </g>
+
+  <!-- L1→L2 connections (25) -->
+  <g stroke="#64ffda" stroke-width="0.4" opacity="0.055" fill="none">
+    <line x1="288" y1="255" x2="448" y2="255"/>
+    <line x1="288" y1="255" x2="448" y2="347"/>
+    <line x1="288" y1="255" x2="448" y2="439"/>
+    <line x1="288" y1="255" x2="448" y2="531"/>
+    <line x1="288" y1="255" x2="448" y2="623"/>
+    <line x1="288" y1="347" x2="448" y2="255"/>
+    <line x1="288" y1="347" x2="448" y2="347"/>
+    <line x1="288" y1="347" x2="448" y2="439"/>
+    <line x1="288" y1="347" x2="448" y2="531"/>
+    <line x1="288" y1="347" x2="448" y2="623"/>
+    <line x1="288" y1="439" x2="448" y2="255"/>
+    <line x1="288" y1="439" x2="448" y2="347"/>
+    <line x1="288" y1="439" x2="448" y2="439"/>
+    <line x1="288" y1="439" x2="448" y2="531"/>
+    <line x1="288" y1="439" x2="448" y2="623"/>
+    <line x1="288" y1="531" x2="448" y2="255"/>
+    <line x1="288" y1="531" x2="448" y2="347"/>
+    <line x1="288" y1="531" x2="448" y2="439"/>
+    <line x1="288" y1="531" x2="448" y2="531"/>
+    <line x1="288" y1="531" x2="448" y2="623"/>
+    <line x1="288" y1="623" x2="448" y2="255"/>
+    <line x1="288" y1="623" x2="448" y2="347"/>
+    <line x1="288" y1="623" x2="448" y2="439"/>
+    <line x1="288" y1="623" x2="448" y2="531"/>
+    <line x1="288" y1="623" x2="448" y2="623"/>
+  </g>
+
+  <!-- L2→L3 connections (20) — colour shifts to purple here -->
+  <g stroke="#a78bfa" stroke-width="0.4" opacity="0.060" fill="none">
+    <line x1="448" y1="255" x2="608" y2="292"/>
+    <line x1="448" y1="255" x2="608" y2="394"/>
+    <line x1="448" y1="255" x2="608" y2="496"/>
+    <line x1="448" y1="255" x2="608" y2="598"/>
+    <line x1="448" y1="347" x2="608" y2="292"/>
+    <line x1="448" y1="347" x2="608" y2="394"/>
+    <line x1="448" y1="347" x2="608" y2="496"/>
+    <line x1="448" y1="347" x2="608" y2="598"/>
+    <line x1="448" y1="439" x2="608" y2="292"/>
+    <line x1="448" y1="439" x2="608" y2="394"/>
+    <line x1="448" y1="439" x2="608" y2="496"/>
+    <line x1="448" y1="439" x2="608" y2="598"/>
+    <line x1="448" y1="531" x2="608" y2="292"/>
+    <line x1="448" y1="531" x2="608" y2="394"/>
+    <line x1="448" y1="531" x2="608" y2="496"/>
+    <line x1="448" y1="531" x2="608" y2="598"/>
+    <line x1="448" y1="623" x2="608" y2="292"/>
+    <line x1="448" y1="623" x2="608" y2="394"/>
+    <line x1="448" y1="623" x2="608" y2="496"/>
+    <line x1="448" y1="623" x2="608" y2="598"/>
+  </g>
+
+  <!-- L3→L4 connections (12) -->
+  <g stroke="#a78bfa" stroke-width="0.5" opacity="0.075" fill="none">
+    <line x1="608" y1="292" x2="768" y2="328"/>
+    <line x1="608" y1="292" x2="768" y2="440"/>
+    <line x1="608" y1="292" x2="768" y2="552"/>
+    <line x1="608" y1="394" x2="768" y2="328"/>
+    <line x1="608" y1="394" x2="768" y2="440"/>
+    <line x1="608" y1="394" x2="768" y2="552"/>
+    <line x1="608" y1="496" x2="768" y2="328"/>
+    <line x1="608" y1="496" x2="768" y2="440"/>
+    <line x1="608" y1="496" x2="768" y2="552"/>
+    <line x1="608" y1="598" x2="768" y2="328"/>
+    <line x1="608" y1="598" x2="768" y2="440"/>
+    <line x1="608" y1="598" x2="768" y2="552"/>
+  </g>
+
+  <!-- Nodes: L0 input (6, teal) -->
+  <g fill="#64ffda" opacity="0.33">
+    <circle cx="130" cy="235" r="4.5"/>
+    <circle cx="130" cy="307" r="4.5"/>
+    <circle cx="130" cy="379" r="4.5"/>
+    <circle cx="130" cy="451" r="4.5"/>
+    <circle cx="130" cy="523" r="4.5"/>
+    <circle cx="130" cy="595" r="4.5"/>
+  </g>
+
+  <!-- Nodes: L1 (5) -->
+  <g fill="#64ffda" opacity="0.29">
+    <circle cx="288" cy="255" r="4.5"/>
+    <circle cx="288" cy="347" r="4.5"/>
+    <circle cx="288" cy="439" r="4.5"/>
+    <circle cx="288" cy="531" r="4.5"/>
+    <circle cx="288" cy="623" r="4.5"/>
+  </g>
+
+  <!-- Nodes: L2 (5) -->
+  <g fill="#64ffda" opacity="0.29">
+    <circle cx="448" cy="255" r="4.5"/>
+    <circle cx="448" cy="347" r="4.5"/>
+    <circle cx="448" cy="439" r="4.5"/>
+    <circle cx="448" cy="531" r="4.5"/>
+    <circle cx="448" cy="623" r="4.5"/>
+  </g>
+
+  <!-- Nodes: L3 (4, purple) -->
+  <g fill="#a78bfa" opacity="0.33">
+    <circle cx="608" cy="292" r="4.5"/>
+    <circle cx="608" cy="394" r="4.5"/>
+    <circle cx="608" cy="496" r="4.5"/>
+    <circle cx="608" cy="598" r="4.5"/>
+  </g>
+
+  <!-- Nodes: L4 output (3, purple, brightest + glow) -->
+  <g fill="#a78bfa" opacity="0.44" filter="url(#node-glow)">
+    <circle cx="768" cy="328" r="5.5"/>
+    <circle cx="768" cy="440" r="5.5"/>
+    <circle cx="768" cy="552" r="5.5"/>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!--  ECG / CARDIAC WAVEFORM  (continuous PQRST across full width)    -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- Background waveform (full width) -->
+  <path stroke="#64ffda" stroke-width="1.2" fill="none" opacity="0.19"
+    d="M 0 840
+       L 50 840  Q 82 820 112 840  L 158 840  L 170 858  L 184 724  L 198 863  L 216 840
+       L 282 840  Q 322 796 362 840  L 400 840
+       L 450 840  Q 482 820 512 840  L 558 840  L 570 858  L 584 724  L 598 863  L 616 840
+       L 682 840  Q 722 796 762 840  L 800 840
+       L 850 840  Q 882 820 912 840  L 958 840  L 970 858  L 984 724  L 998 863  L 1016 840
+       L 1082 840  Q 1122 796 1162 840  L 1200 840
+       L 1250 840  Q 1282 820 1312 840  L 1358 840  L 1370 858  L 1384 724  L 1398 863  L 1416 840
+       L 1482 840  Q 1522 796 1562 840  L 1600 840
+       L 1650 840  Q 1682 820 1712 840  L 1758 840  L 1770 858  L 1784 724  L 1798 863  L 1816 840
+       L 1882 840  Q 1922 796 1962 840  L 1920 840"/>
+
+  <!-- Highlighted QRS complex (one beat glows) -->
+  <path stroke="#64ffda" stroke-width="2.2" fill="none" opacity="0.60" filter="url(#soft-glow)"
+    d="M 953 840 L 970 858 L 984 724 L 998 863 L 1016 840"/>
+
+  <!-- Blinking cursor dot on current scan position -->
+  <circle cx="570" cy="858" r="2.5" fill="#64ffda" opacity="0.55" filter="url(#node-glow)"/>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!--  UNDERWATER SONAR RINGS  (emanating from below screen)           -->
+  <!--  Represents sub-sea robotics / acoustic depth sensing            -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- Sonar glow fill -->
+  <circle cx="960" cy="1350" r="950" fill="url(#sonar-fill)"/>
+
+  <!-- Sonar ping rings -->
+  <g stroke="#a78bfa" fill="none">
+    <circle cx="960" cy="1350" r="370"  stroke-width="0.8" opacity="0.12"/>
+    <circle cx="960" cy="1350" r="555"  stroke-width="0.7" opacity="0.10"/>
+    <circle cx="960" cy="1350" r="745"  stroke-width="0.7" opacity="0.08"/>
+    <circle cx="960" cy="1350" r="945"  stroke-width="0.6" opacity="0.07"/>
+    <circle cx="960" cy="1350" r="1155" stroke-width="0.5" opacity="0.05"/>
+  </g>
+
+  <!-- Sonar crosshair / target reticle -->
+  <g stroke="#a78bfa" opacity="0.15" fill="none">
+    <line x1="908" y1="1350" x2="1012" y2="1350" stroke-width="0.6"/>
+    <line x1="960" y1="1298" x2="960"  y2="1402" stroke-width="0.6"/>
+    <circle cx="960" cy="1350" r="20" stroke-width="0.9"/>
+    <circle cx="960" cy="1350" r="7"  stroke-width="0.7"/>
+  </g>
+
+  <!-- ROV target markers (simulated detected objects) -->
+  <g stroke="#a78bfa" fill="none" opacity="0.11">
+    <g transform="translate(398,922)">
+      <line x1="-11" y1="0" x2="11" y2="0" stroke-width="0.6"/>
+      <line x1="0" y1="-11" x2="0" y2="11" stroke-width="0.6"/>
+      <circle r="7" stroke-width="0.6"/>
+    </g>
+    <g transform="translate(1498,958)">
+      <line x1="-11" y1="0" x2="11" y2="0" stroke-width="0.6"/>
+      <line x1="0" y1="-11" x2="0" y2="11" stroke-width="0.6"/>
+      <circle r="7" stroke-width="0.6"/>
+    </g>
+    <g transform="translate(695,948)">
+      <line x1="-9" y1="0" x2="9" y2="0" stroke-width="0.5"/>
+      <line x1="0" y1="-9" x2="0" y2="9" stroke-width="0.5"/>
+      <circle r="5.5" stroke-width="0.5"/>
+    </g>
+    <g transform="translate(1198,938)">
+      <line x1="-9" y1="0" x2="9" y2="0" stroke-width="0.5"/>
+      <line x1="0" y1="-9" x2="0" y2="9" stroke-width="0.5"/>
+      <circle r="5.5" stroke-width="0.5"/>
+    </g>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!--  ML / MLOPS PIPELINE  (subtle top strip)                         -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+
+  <g opacity="0.11">
+    <rect x="55"  y="58" width="78" height="22" rx="3" fill="rgba(100,255,218,0.04)" stroke="#64ffda" stroke-width="0.6"/>
+    <rect x="197" y="58" width="90" height="22" rx="3" fill="rgba(100,255,218,0.04)" stroke="#64ffda" stroke-width="0.6"/>
+    <rect x="355" y="58" width="80" height="22" rx="3" fill="rgba(100,255,218,0.04)" stroke="#64ffda" stroke-width="0.6"/>
+    <rect x="505" y="58" width="80" height="22" rx="3" fill="rgba(100,255,218,0.04)" stroke="#64ffda" stroke-width="0.6"/>
+    <rect x="655" y="58" width="80" height="22" rx="3" fill="rgba(100,255,218,0.04)" stroke="#64ffda" stroke-width="0.6"/>
+    <!-- Arrows -->
+    <line x1="133" y1="69" x2="195" y2="69" stroke="#64ffda" stroke-width="0.6"/>
+    <polygon points="193,65 199,69 193,73" fill="#64ffda"/>
+    <line x1="287" y1="69" x2="353" y2="69" stroke="#64ffda" stroke-width="0.6"/>
+    <polygon points="351,65 357,69 351,73" fill="#64ffda"/>
+    <line x1="435" y1="69" x2="503" y2="69" stroke="#64ffda" stroke-width="0.6"/>
+    <polygon points="501,65 507,69 501,73" fill="#64ffda"/>
+    <line x1="585" y1="69" x2="653" y2="69" stroke="#64ffda" stroke-width="0.6"/>
+    <polygon points="651,65 657,69 651,73" fill="#64ffda"/>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!--  SCATTERED DATA PARTICLES  (feature vectors, embeddings)         -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+
+  <g fill="#64ffda" opacity="0.13">
+    <circle cx="902"  cy="142" r="2"/>
+    <circle cx="1042" cy="87"  r="1.5"/>
+    <circle cx="822"  cy="212" r="2.5"/>
+    <circle cx="977"  cy="272" r="1.5"/>
+    <circle cx="1097" cy="157" r="2"/>
+    <circle cx="1192" cy="297" r="1.5"/>
+    <circle cx="1142" cy="447" r="2"/>
+    <circle cx="1047" cy="512" r="1.5"/>
+    <circle cx="897"  cy="597" r="2"/>
+    <circle cx="1017" cy="672" r="1.5"/>
+    <circle cx="1177" cy="617" r="2"/>
+    <circle cx="1067" cy="117" r="2"/>
+    <circle cx="927"  cy="347" r="1.5"/>
+    <circle cx="1127" cy="547" r="2.5"/>
+    <circle cx="867"  cy="757" r="1.5"/>
+    <circle cx="1082" cy="202" r="1.5"/>
+    <circle cx="842"  cy="482" r="2"/>
+  </g>
+
+  <g fill="#a78bfa" opacity="0.10">
+    <circle cx="847"  cy="187" r="2"/>
+    <circle cx="997"  cy="317" r="2.5"/>
+    <circle cx="1077" cy="407" r="2"/>
+    <circle cx="917"  cy="477" r="1.5"/>
+    <circle cx="1157" cy="367" r="2"/>
+    <circle cx="827"  cy="547" r="2.5"/>
+    <circle cx="967"  cy="637" r="2"/>
+    <circle cx="1117" cy="697" r="1.5"/>
+    <circle cx="877"  cy="697" r="2"/>
+    <circle cx="1047" cy="777" r="1.5"/>
+  </g>
+
+  <!-- Sparse connections between particles (graph / attention map) -->
+  <g stroke="#64ffda" stroke-width="0.5" opacity="0.06" fill="none">
+    <line x1="902"  y1="142" x2="1042" y2="87"/>
+    <line x1="1042" y1="87"  x2="1097" y2="157"/>
+    <line x1="902"  y1="142" x2="822"  y2="212"/>
+    <line x1="1097" y1="157" x2="1192" y2="297"/>
+    <line x1="977"  y1="272" x2="1097" y2="157"/>
+    <line x1="1192" y1="297" x2="1142" y2="447"/>
+    <line x1="1047" y1="512" x2="1142" y2="447"/>
+    <line x1="897"  y1="597" x2="1017" y2="672"/>
+    <line x1="1017" y1="672" x2="1177" y2="617"/>
+    <line x1="822"  y1="212" x2="927"  y2="347"/>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!--  DEPTH AESTHETIC  (water column / acoustic horizons)             -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- Dashed horizontal depth lines (acoustic propagation fronts) -->
+  <g stroke="#a78bfa" stroke-width="0.35" opacity="0.055" fill="none">
+    <line x1="0" y1="692" x2="1920" y2="692" stroke-dasharray="4 22"/>
+    <line x1="0" y1="752" x2="1920" y2="752" stroke-dasharray="4 22"/>
+    <line x1="0" y1="818" x2="1920" y2="818" stroke-dasharray="4 22"/>
+  </g>
+
+  <!-- Underwater caustic light ripples -->
+  <g fill="none" stroke="#64ffda" stroke-width="0.25" opacity="0.038">
+    <ellipse cx="352"  cy="942" rx="66"  ry="18"/>
+    <ellipse cx="592"  cy="977" rx="53"  ry="14"/>
+    <ellipse cx="792"  cy="957" rx="73"  ry="19"/>
+    <ellipse cx="1092" cy="967" rx="59"  ry="16"/>
+    <ellipse cx="1312" cy="987" rx="69"  ry="20"/>
+    <ellipse cx="1522" cy="957" rx="51"  ry="13"/>
+    <ellipse cx="1722" cy="977" rx="61"  ry="16"/>
+  </g>
+
+</svg>
