@@ -168,19 +168,18 @@
       width:8px; height:8px; border-radius:50%;
     }
     .tag-expert::before     { background:#02fa1b; box-shadow:0 0 5px rgba(100,255,218,.5); }
-    .tag-proficient::before { background:#d0de09; }
+    .tag-proficient::before { background:#0171fb; }
     .tag-familiar::before   { background:#f7da01; }
     .tag-exploring::before  { width:8px; height:8px; background:transparent; border:1.5px solid  #f90303; }
     .skill-legend { display:flex; gap:16px; flex-wrap:wrap; margin-top:18px; padding-top:14px; border-top:1px solid var(--border); }
     .skill-legend > span { display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:16px; color:var(--text3); }
     .ldot { display:inline-block; flex-shrink:0; width:10px; height:10px; border-radius:50%; }
     .ldot-expert     { background:#02fa1b; }
-    .ldot-proficient { background:#d0de09; }
+    .ldot-proficient { background:#0171fb; }
     .ldot-familiar   { background:#f7da01; }
     .ldot-exploring  { width:10px; height:10px; background:transparent; border:1.5px solid #f90303; }
 
     /* ── RESEARCH ── */
-    #research { background: var(--bg2); }
     .thesis-badge {
       display: inline-flex; align-items: center; gap:7px;
       padding: 5px 13px; background:var(--adim); border:1px solid rgba(100,255,218,.2);
@@ -216,6 +215,7 @@
     .status-ongoing svg { animation:blink 1.8s ease-in-out infinite; }
 
     /* ── PUBLICATIONS ── */
+    #publications { background: var(--bg2); }
     .pubs { display:flex; flex-direction:column; gap:16px; }
     .pub {
       background:var(--card); border:1px solid var(--border); border-radius:var(--rl);
@@ -252,9 +252,12 @@
     .proj-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px; }
     .proj {
       background:var(--card); border:1px solid var(--border); border-radius:var(--rl);
-      padding:28px 24px; display:flex; flex-direction:column; gap:14px; transition:all .25s var(--ease);
+      padding:28px 24px; display:flex; flex-direction:column; gap:14px;
+      transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .2s;
+      position: relative; z-index: 1; will-change: transform;
     }
-    .proj:hover { border-color:rgba(100,255,218,.3); transform:translateY(-6px); box-shadow:0 20px 48px rgba(0,0,0,.4); }
+    .proj:hover { border-color:rgba(100,255,218,.3); box-shadow:0 20px 48px rgba(0,0,0,.4); z-index: 20; }
+    @media(max-width:1023px){ .proj:hover { transform: translateY(-6px); } }
     .proj-top { display:flex; align-items:center; justify-content:space-between; }
     .proj-icon { font-size:30px; }
     .proj-ext { display:flex; gap:12px; }
@@ -266,6 +269,19 @@
     .proj-tech { display:flex; gap:7px; flex-wrap:wrap; }
     .proj-tech span { font-family:var(--mono); font-size:13px; color:var(--text3); }
     .stars { display:inline-flex; align-items:center; gap:3px; font-family:var(--mono); font-size:14px; color:var(--yellow); }
+    .proj-thumb {
+      overflow: hidden; border-radius: var(--rl) var(--rl) 0 0;
+      height: 180px; margin: -28px -24px 18px;
+      background: var(--bg); flex-shrink: 0;
+      transform-origin: center top;
+      transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+    }
+    .proj-thumb:not(:has(img,video)) { display: none; }
+    .proj-thumb img,
+    .proj-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+    /* inner zoom on hover (all screens); card pop-out on ≥1024px handled by JS */
+    .proj:hover .proj-thumb img,
+    .proj:hover .proj-thumb video { transform: scale(1.12); }
 
     /* ── TIMELINE ── */
     .xp-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; }
@@ -348,9 +364,9 @@
     <a href="#hero" class="nav-logo">&lt;azad/&gt;</a>
     <ul class="nav-links">
       <li><a href="#about"><span class="n">01.</span>About</a></li>
-      <li><a href="#research"><span class="n">02.</span>Research</a></li>
-      <li><a href="#publications"><span class="n">03.</span>Publications</a></li>
-      <li><a href="#projects"><span class="n">04.</span>Projects</a></li>
+      <li><a href="#projects"><span class="n">02.</span>Projects</a></li>
+      <li><a href="#research"><span class="n">03.</span>Research</a></li>
+      <li><a href="#publications"><span class="n">04.</span>Publications</a></li>
       <li><a href="#experience"><span class="n">05.</span>Experience</a></li>
       <li><a href="#contact"><span class="n">06.</span>Contact</a></li>
       <li><a href="https://www.ntnu.edu/employees/md.a.azad" target="_blank" class="nav-cv">CV↗</a></li>
@@ -367,7 +383,7 @@
     <div class="hero-c">
       <div class="hero-text">
         <p class="hero-hi">Hi, my name is</p>
-        <h1 class="hero-name">Md Abulkalam Azad</h1>
+        <h1 class="hero-name">Azad Md Abulkalam</h1>
         <h2 class="hero-sub">I build AI for what matters — cardiac imaging, robotics, and ready to go beyond.</h2>
         <p class="hero-desc">
           PhD Researcher at <strong>NTNU</strong> working at the intersection of
@@ -459,10 +475,78 @@
   </div>
 </section>
 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sh"><span class="n">02.</span><h2>Projects</h2></div>
+    <div class="proj-grid">
+
+      <div class="proj fi">
+        <div class="proj-thumb"><video src="images/output.mp4" autoplay muted loop playsinline></video></div>
+        <div class="proj-top">
+          <div class="proj-icon">🫀</div>
+          <div class="proj-ext">
+            <a href="https://github.com/riponazad/echotracker" target="_blank" title="GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://huggingface.co/spaces/riponazad/echotracker" target="_blank" title="Hugging Face">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243 1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3>EchoTracker</h3>
+        <p>A coarse-to-fine deep learning architecture for long-range myocardial point tracking in 2D echocardiography, enabling automated cardiac motion and strain analysis.</p>
+        <div class="proj-foot">
+          <div class="proj-tech"><span>Python</span><span>·</span><span>PyTorch</span><span>·</span><span>Medical Imaging</span></div>
+          <!-- <span class="stars">★ 56</span> -->
+        </div>
+      </div>
+
+      <div class="proj fi">
+        <div class="proj-thumb"><video src="images/teaser.mp4" autoplay muted loop playsinline></video></div>
+        <div class="proj-top">
+          <div class="proj-icon">⚖️📍</div>
+          <div class="proj-ext">
+            <a href="https://github.com/riponazad/ptecho" target="_blank" title="GitHub">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://huggingface.co/spaces/riponazad/echotracker" target="_blank" title="Hugging Face">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243a1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3>PTEcho</h3>
+        <p>Alleviation of directional motion bias from general point tracking models for speckle tracking echocardiography.</p>
+        <div class="proj-foot">
+          <div class="proj-tech"><span>Python</span><span>·</span><span>PyTorch</span><span>·</span><span>Benchmarking</span></div>
+        </div>
+      </div>
+
+      <div class="proj fi">
+        <div class="proj-thumb"><video src="images/Temporal.mp4" autoplay muted loop playsinline></video></div>
+        <div class="proj-top">
+          <div class="proj-icon">🌊</div>
+          <div class="proj-ext">
+            <a href="https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3094213" target="_blank" title="Thesis">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3>MViST</h3>
+        <p>Multi-label Video Classification for Underwater Ship Inspection</p>
+        <div class="proj-foot">
+          <div class="proj-tech"><span>Python</span><span>·</span><span>ViT</span><span>·</span><span>Video Understanding</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- RESEARCH -->
 <section id="research">
   <div class="wrap">
-    <div class="sh"><span class="n">02.</span><h2>Research</h2></div>
+    <div class="sh"><span class="n">03.</span><h2>Research</h2></div>
     <div class="fi">
       <div class="thesis-badge">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
@@ -522,7 +606,7 @@
       <div class="fi">
         <div class="thesis-badge">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          NTNU &amp; SINTEF Digital — Master's Research
+          SINTEF Digital &amp; NTNU — Master's Research
         </div>
         <p class="thesis-t">Vision-based 3D Scene Reconstruction for Underwater Robotics using Neural Radiance Fields</p>
       </div>
@@ -580,7 +664,7 @@
 <!-- PUBLICATIONS -->
 <section id="publications">
   <div class="wrap">
-    <div class="sh"><span class="n">03.</span><h2>Publications</h2></div>
+    <div class="sh"><span class="n">04.</span><h2>Publications</h2></div>
     <p style="color:var(--text3);font-size:13.5px;margin-top:-36px;margin-bottom:40px;">
       Also on <a href="https://scholar.google.com/citations?hl=en&user=2Ke2yAkAAAAJ" target="_blank">Google Scholar</a> · <a href="https://www.researchgate.net/profile/Md-Abulkalam-Azad" target="_blank">ResearchGate</a> · <a href="https://orcid.org/0009-0006-7177-4961" target="_blank">ORCID</a>
     </p>
@@ -643,68 +727,6 @@
           <p class="pub-authors">Sabah S., Anwar S.Z.B., Afroze S., <strong>Azad M.A.</strong>, Shatabda S., Farid D.M.</p>
           <div class="pub-venue"><span class="badge badge-conf">SKIMA 2019</span><span class="badge-venue">Maldives</span></div>
           <div class="pub-links"><a href="https://doi.org/10.1109/SKIMA47702.2019.8982419" target="_blank" class="plink">📄 Paper</a></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <div class="sh"><span class="n">04.</span><h2>Projects</h2></div>
-    <div class="proj-grid">
-
-      <div class="proj fi">
-        <div class="proj-top">
-          <div class="proj-icon">🫀</div>
-          <div class="proj-ext">
-            <a href="https://github.com/riponazad/echotracker" target="_blank" title="GitHub">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-            <a href="https://link.springer.com/chapter/10.1007/978-3-031-72083-3_60" target="_blank" title="Paper">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-        </div>
-        <h3>EchoTracker</h3>
-        <p>Official implementation of the MICCAI 2024 paper. A deep learning framework for long-range myocardial point tracking in 2D echocardiography, enabling automated cardiac motion and strain analysis.</p>
-        <div class="proj-foot">
-          <div class="proj-tech"><span>Python</span><span>·</span><span>PyTorch</span><span>·</span><span>Medical Imaging</span></div>
-          <span class="stars">★ 56</span>
-        </div>
-      </div>
-
-      <div class="proj fi">
-        <div class="proj-top">
-          <div class="proj-icon">📍</div>
-          <div class="proj-ext">
-            <a href="https://github.com/riponazad/ptecho" target="_blank" title="GitHub">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-        </div>
-        <h3>PTEcho</h3>
-        <p>A research pipeline and benchmark framework for evaluating point tracking algorithms on echocardiographic sequences — from classical optical flow to modern deep learning models.</p>
-        <div class="proj-foot">
-          <div class="proj-tech"><span>Python</span><span>·</span><span>PyTorch</span><span>·</span><span>Benchmarking</span></div>
-        </div>
-      </div>
-
-      <div class="proj fi">
-        <div class="proj-top">
-          <div class="proj-icon">🌊</div>
-          <div class="proj-ext">
-            <a href="https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3094213" target="_blank" title="Thesis">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-        </div>
-        <h3>MViST</h3>
-        <p>Multi-label Vision Spatiotemporal Transformer for underwater ship hull inspection. Classifies multiple concurrent damage types from ROV video using Vision Transformers. Published at OCEANS 2023.</p>
-        <div class="proj-foot">
-          <div class="proj-tech"><span>Python</span><span>·</span><span>ViT</span><span>·</span><span>Video Understanding</span></div>
         </div>
       </div>
 
@@ -900,6 +922,40 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+  // Project videos — play when card scrolls into view, pause when out
+  const vidObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const vid = e.target.querySelector('.proj-thumb video');
+      if (!vid) return;
+      if (e.isIntersecting) vid.play().catch(() => {});
+      else { vid.pause(); vid.currentTime = 0; }
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.proj').forEach(c => vidObs.observe(c));
+
+  // Full-card pop-out toward screen centre on large screens
+  (function initCardPopout() {
+    if (window.innerWidth < 1024) return;
+    const large  = window.innerWidth >= 1440;
+    const scale  = large ? 1.6  : 1.38;
+    const pull   = large ? 0.58 : 0.46; // fraction of the gap to pull toward centre
+    document.querySelectorAll('.proj').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        const r  = card.getBoundingClientRect();
+        const dx = (window.innerWidth  / 2 - (r.left + r.width  / 2)) * pull;
+        const dy = (window.innerHeight / 2 - (r.top  + r.height / 2)) * pull;
+        card.style.transform = `translate(${dx}px,${dy}px) scale(${scale})`;
+        card.style.zIndex    = '50';
+        card.style.boxShadow = '0 40px 100px rgba(0,0,0,.78)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.zIndex    = '';
+        card.style.boxShadow = '';
+      });
+    });
+  }());
 </script>
 </body>
 </html>
