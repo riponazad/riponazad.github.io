@@ -235,10 +235,12 @@
     .badge {
       padding:2px 9px; border-radius:4px; font-family:var(--mono); font-size:12px; font-weight:500;
     }
-    .badge-top    { background:rgba(255,107,107,.12); color:var(--red);    border:1px solid rgba(255,107,107,.25); }
-    .badge-conf   { background:rgba(167,139,250,.12); color:var(--purple); border:1px solid rgba(167,139,250,.25); }
-    .badge-pre    { background:rgba(255,209,102,.12); color:var(--yellow); border:1px solid rgba(255,209,102,.25); }
-    .badge-venue  { font-size:13.5px; color:var(--text3); }
+    .badge-top     { background:rgba(255,107,107,.12); color:var(--red);    border:1px solid rgba(255,107,107,.25); }
+    .badge-conf    { background:rgba(167,139,250,.12); color:var(--purple); border:1px solid rgba(167,139,250,.25); }
+    .badge-pre     { background:rgba(255,209,102,.12); color:var(--yellow); border:1px solid rgba(255,209,102,.25); }
+    .badge-journal { background:rgba(96,165,250,.12);  color:#60a5fa;       border:1px solid rgba(96,165,250,.25); }
+    .badge-ws      { background:rgba(100,255,218,.12); color:var(--accent); border:1px solid rgba(100,255,218,.25); }
+    .badge-venue   { font-size:13.5px; color:var(--text3); }
     .pub-links { display:flex; gap:9px; flex-wrap:wrap; }
     .plink {
       display:inline-flex; align-items:center; gap:4px;
@@ -369,7 +371,7 @@
       <li><a href="#publications"><span class="n">04.</span>Publications</a></li>
       <li><a href="#experience"><span class="n">05.</span>Experience</a></li>
       <li><a href="#contact"><span class="n">06.</span>Contact</a></li>
-      <li><a href="https://www.ntnu.edu/employees/md.a.azad" target="_blank" class="nav-cv">CV↗</a></li>
+      <li><a href="images/CV_AZ.pdf" target="_blank" class="nav-cv">CV↗</a></li>
     </ul>
   </div>
 </nav>
@@ -384,7 +386,7 @@
       <div class="hero-text">
         <p class="hero-hi">Hi, my name is</p>
         <h1 class="hero-name">Azad Md Abulkalam</h1>
-        <h2 class="hero-sub">I build AI for what matters — cardiac imaging, robotics, and ready to go beyond.</h2>
+        <h2 class="hero-sub">I build AI for what matters — cardiac imaging, robotics, 3D reconstruction, and ready to go beyond.</h2>
         <p class="hero-desc">
           PhD Researcher at <strong>NTNU</strong> working at the intersection of
           <strong>computer vision</strong>, <strong>deep learning</strong>, and
@@ -479,7 +481,7 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <div class="sh"><span class="n">02.</span><h2>Projects (R&D)</h2></div>
+    <div class="sh"><span class="n">02.</span><h2>Projects <span style="font-size:0.55em;font-weight:400;color:var(--text3);font-family:var(--mono)">(Highlights)</span></h2></div>
     <div class="proj-grid">
 
       <div class="proj fi">
@@ -615,19 +617,23 @@
       </div>
 
     </div>
+    <p style="margin-top:36px; font-size:14.5px; color:var(--text3); text-align:center;">
+      Many more academic &amp; toy projects from my M.Sc. and B.Sc. years live on
+      <a href="https://github.com/riponazad" target="_blank" style="color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(100,255,218,.3);">GitHub ↗</a>
+    </p>
   </div>
 </section>
 
 <!-- RESEARCH -->
 <section id="research">
   <div class="wrap">
-    <div class="sh"><span class="n">03.</span><h2>Research</h2></div>
+    <div class="sh"><span class="n">03.</span><h2>Research & Development</h2></div>
     <div class="fi">
       <div class="thesis-badge">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        NTNU — PhD Research
+        NTNU — PhD Research (2023 — Present)
       </div>
-      <p class="thesis-t">Advancing Myocardial Function Imaging in Echocardiography using Vision Intelligence</p>
+      <p class="thesis-t" style="color:#64ffda">Advancing Myocardial Function Imaging in Echocardiography using Vision Intelligence</p>
     </div>
     <div class="tasks">
       <div class="task fi">
@@ -638,8 +644,22 @@
             Done
           </span>
         </div>
-        <h4>Point Tracking for Motion Estimation</h4>
-        <p>Develop a novel deep learning-based point tracking method for accurate tissue motion estimation across full cardiac cycles in echocardiographic sequences.</p>
+        <h4>Long-range Myocardial Point Tracking</h4>
+        <p>Designed a coarse-to-fine deep learning model for long-range tissue motion estimation across full cardiac cycles in echocardiographic sequences. Achieved 67% average position accuracy and 2.86px median trajectory error, with 25% relative improvement in GLS computation. Published at <em>MICCAI 2024</em>.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <a href="https://link.springer.com/chapter/10.1007/978-3-031-72083-3_60" target="_blank" class="plink">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Paper
+          </a>
+          <a href="https://arxiv.org/abs/2405.08587" target="_blank" class="plink">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            arXiv
+          </a>
+          <a href="https://github.com/riponazad/echotracker" target="_blank" class="plink">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Code
+          </a>
+        </div>
       </div>
       <div class="task fi">
         <div class="tn-row">
@@ -649,8 +669,14 @@
             Done
           </span>
         </div>
-        <h4>Multi-view Strain Estimation</h4>
-        <p>Extend the automated strain estimation pipeline to multiple cardiac views, enabling regional myocardial strain analysis for comprehensive cardiac assessment.</p>
+        <h4>Bias-Aware Multi-view Speckle Tracking</h4>
+        <p>Identified systematic directional motion bias in modern point tracking models across cardiac views, and proposed impartial motion training with tailored augmentations to correct it. Achieved a 60.7% boost in position accuracy and 61.5% reduction in trajectory error, with improved GLS alignment to expert tools. Published at <em>ICCV 2025 Workshop CVAMD</em>.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <a href="https://arxiv.org/abs/2507.10127" target="_blank" class="plink">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            arXiv
+          </a>
+        </div>
       </div>
       <div class="task fi">
         <div class="tn-row">
@@ -679,11 +705,32 @@
     <!-- MSc RESEARCH -->
     <div style="border-top:1px solid var(--border); margin-top:56px; padding-top:52px;">
       <div class="fi">
-        <div class="thesis-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          SINTEF Digital &amp; NTNU — Master's Research
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+          <div>
+            <div class="thesis-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              SINTEF Digital &amp; NTNU — Master's Thesis (2022 — 2023)
+            </div>
+            <p class="thesis-t" style="color:#7dd3fc">Multi-label Video Classification for Underwater Ship Inspection</p>
+            <p style="font-size:14px; color:var(--text3); margin-top:8px; font-family:var(--mono);">
+              Part of <em style="font-style:normal;color:var(--text2);"><a href="https://www.sintef.no/en/projects/2021/liaci/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px dashed rgba(100,255,218,.35)">LIACI</a></em> — Label Inspection of Autonomous and Cognitive ships · SINTEF Digital &amp; NTNU
+            </p>
+          </div>
+          <div style="display:flex; gap:9px; flex-shrink:0; margin-top:4px;">
+            <a href="https://ieeexplore.ieee.org/document/10244578" target="_blank" class="plink">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              IEEE
+            </a>
+            <a href="https://arxiv.org/abs/2305.17338" target="_blank" class="plink">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              arXiv
+            </a>
+            <a href="https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3094213" target="_blank" class="plink">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Thesis
+            </a>
+          </div>
         </div>
-        <p class="thesis-t">Vision-based 3D Scene Reconstruction for Underwater Robotics using Neural Radiance Fields</p>
       </div>
       <div class="tasks">
         <div class="task fi">
@@ -694,8 +741,8 @@
               Done
             </span>
           </div>
-          <h4>Underwater Visual Perception</h4>
-          <p>Develop deep learning-based detection and segmentation methods for robust visual perception in challenging underwater environments with limited visibility and color distortion.</p>
+          <h4>Dataset &amp; Annotation Framework</h4>
+          <p>Curated and annotated an ROV-collected underwater ship hull video dataset with multi-label ground truth covering concurrent defect categories — corrosion, marine growth, and coating degradation — establishing the benchmark for the full study.</p>
         </div>
         <div class="task fi">
           <div class="tn-row">
@@ -705,8 +752,8 @@
               Done
             </span>
           </div>
-          <h4>3D Reconstruction via NeRF</h4>
-          <p>Adapt and implement Neural Radiance Fields for efficient 3D scene reconstruction from monocular video, in collaboration with SINTEF Digital's applied research infrastructure.</p>
+          <h4>Spatiotemporal Transformer Architecture</h4>
+          <p>Designed MViST — a Vision Spatiotemporal Transformer that fuses spatial per-frame features with temporal self-attention across consecutive video frames, enabling simultaneous detection of multiple hull conditions from ROV footage.</p>
         </div>
         <div class="task fi">
           <div class="tn-row">
@@ -716,8 +763,8 @@
               Done
             </span>
           </div>
-          <h4>ROV Motion Planning &amp; Control</h4>
-          <p>Design and implement motion planning and closed-loop control algorithms for underwater ROV navigation, integrating visual feedback from the perception pipeline.</p>
+          <h4>Model Training &amp; Benchmarking</h4>
+          <p>Trained and evaluated MViST against CNN and single-frame ViT baselines, demonstrating superior multi-label classification performance and robustness under challenging underwater visibility conditions.</p>
         </div>
         <div class="task fi">
           <div class="tn-row">
@@ -727,8 +774,136 @@
               Done
             </span>
           </div>
-          <h4>System Integration &amp; Evaluation</h4>
-          <p>Integrate perception and reconstruction modules into a unified pipeline and evaluate end-to-end performance in simulated and real underwater test scenarios.</p>
+          <h4>Publication &amp; Dissemination</h4>
+          <p>Published findings at <strong>OCEANS 2023, Limerick</strong> (IEEE) and presented at the <strong>NORA Annual Conference 2023</strong>, Tromsø — in collaboration with SINTEF Digital, NTNU, and the LIACI project team.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SINTEF SUMMER RESEARCH -->
+    <div style="border-top:1px solid var(--border); margin-top:56px; padding-top:52px;">
+      <div class="fi">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+          <div>
+            <div class="thesis-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              SINTEF Digital — Summer Research (2022)
+            </div>
+            <p class="thesis-t" style="color:#86efac">Neural Radiance Field (NeRF) for 3D Object Reconstruction</p>
+            <p style="font-size:14px; color:var(--text3); margin-top:8px; font-family:var(--mono);">
+              Part of <em style="font-style:normal;color:var(--text2);">DeepStruct</em> — 3D imaging of transparent &amp; challenging objects for logistics automation · Client: <em style="font-style:normal;color:var(--text2);">Zivid</em>
+            </p>
+          </div>
+          <div style="display:flex; gap:9px; flex-shrink:0; margin-top:4px;">
+            <a href="https://www.sintef.no/en/projects/2021/deepstruct/" target="_blank" class="plink">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Project
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="https://youtu.be/jDypAWiubDk" target="_blank" rel="noopener"
+         style="display:block; margin:28px 0 32px; border-radius:var(--rl); overflow:hidden; position:relative; padding-top:56.25%; background:#000; text-decoration:none;">
+        <img src="https://img.youtube.com/vi/jDypAWiubDk/maxresdefault.jpg"
+             alt="SINTEF Digital — NeRF Summer Research 2022"
+             style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s;"
+             onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='.85'">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:68px;background:rgba(255,0,0,.88);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div style="position:absolute;bottom:12px;left:14px;font-size:12px;font-family:var(--mono);color:rgba(255,255,255,.75);pointer-events:none;">▶ Watch on YouTube — Recorded by SINTEF Digital</div>
+      </a>
+      <div class="tasks">
+        <div class="task fi">
+          <div class="tn-row">
+            <div class="tn">Task 01</div>
+            <span class="status status-done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Done
+            </span>
+          </div>
+          <h4>NeRF Theory &amp; Instant NGP</h4>
+          <p>Studied the Neural Radiance Field framework in depth: 5D coordinate-based continuous scene representation, volume rendering, positional encoding, and hierarchical volume sampling. Evaluated NVIDIA's Instant NGP with multiresolution hash encoding, which reduces training from hours to seconds while maintaining reconstruction quality.</p>
+        </div>
+        <div class="task fi">
+          <div class="tn-row">
+            <div class="tn">Task 02</div>
+            <span class="status status-done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Done
+            </span>
+          </div>
+          <h4>Custom Dataset &amp; Training Pipeline</h4>
+          <p>Built a multi-view capture and processing pipeline for custom industrial objects. Used COLMAP structure-from-motion for camera pose estimation from high-resolution images, and deployed Instant NeRF training on both a Windows workstation and a Linux HPC cluster.</p>
+        </div>
+        <div class="task fi">
+          <div class="tn-row">
+            <div class="tn">Task 03</div>
+            <span class="status status-done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Done
+            </span>
+          </div>
+          <h4>3D Reconstruction of Challenging Objects</h4>
+          <p>Reconstructed 3D meshes of industrial objects including transparent and reflective surfaces — a core challenge for logistics automation. Studied the impact of image resolution, capture sparsity and direction, background removal quality, and marching cube resolution on the final mesh accuracy.</p>
+        </div>
+        <div class="task fi">
+          <div class="tn-row">
+            <div class="tn">Task 04</div>
+            <span class="status status-done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Done
+            </span>
+          </div>
+          <h4>Benchmarking vs NVIDIA 3D MoMa</h4>
+          <p>Compared Instant NeRF against NVIDIA's 3D MoMa (CVPR 2022) — which simultaneously extracts mesh, textures, and lighting — on the same object. NeRF achieved superior reconstruction quality in minutes with minimal GPU memory, versus hours for 3D MoMa, establishing it as the preferred approach for the project.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAMSUNG R&D OPS -->
+    <div style="border-top:1px solid var(--border); margin-top:56px; padding-top:52px;">
+      <div class="fi">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+          <div>
+            <div class="thesis-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+              Samsung R&amp;D Bangladesh — R&amp;D Ops (2020 — 2021)
+            </div>
+            <p class="thesis-t" style="color:#d8b4fe">SDK Developer Evangelism &amp; Multi-platform Engineering</p>
+            <p style="font-size:14px; color:var(--text3); margin-top:8px; font-family:var(--mono);">
+              Products: <em style="font-style:normal;color:var(--text2);">Galaxy Watch Face · Samsung IAP · AR Emoji SDK · Samsung DeX · Galaxy Store · Unity UDP</em>
+            </p>
+          </div>
+          <div style="display:flex; gap:9px; flex-shrink:0; margin-top:4px;">
+            <a href="https://research.samsung.com/srbd" target="_blank" class="plink">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Samsung R&amp;D
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="tasks">
+        <div class="task fi">
+          <div class="tn-row">
+            <div class="tn" style="color:#64ffda">60%</div>
+          </div>
+          <h4 style="color:#64ffda">Developer Evangelism, Cross-platform SDK Support &amp; Pre-release QA</h4>
+          <p>Served as the primary technical contact for third-party developers integrating Samsung SDKs — covering Galaxy Watch Face, Samsung IAP, AR Emoji SDK for Unity, Samsung DeX, Galaxy Store, and Unity Distribution Portal (UDP). Diagnosed and resolved integration issues across Android, Unity, Windows, and Tizen platforms, rapidly switching between C#, Java, Kotlin, and C++ as needed. Also executed structured pre-release validation cycles before every new SDK version — verifying previously reported issues were resolved, confirming backward compatibility, and stress-testing new features across target platforms.</p>
+        </div>
+        <div class="task fi">
+          <div class="tn-row">
+            <div class="tn" style="color:#7dd3fc">20%</div>
+          </div>
+          <h4 style="color:#7dd3fc">Technical Content &amp; Developer Education</h4>
+          <p>Authored integration guides and feature spotlights published on Samsung Developers — translating complex SDK internals into clear, step-by-step tutorials for external developers. Writing spanned Unity plugin setup, in-app purchase flows, AR Emoji customisation pipelines, and DeX multi-window adaptation patterns, directly reducing support ticket volume for new releases.</p>
+        </div>
+        <div class="task fi">
+          <div class="tn-row">
+            <div class="tn" style="color:#d8b4fe">20%</div>
+          </div>
+          <h4 style="color:#d8b4fe">Internal R&amp;D &amp; Engineering Excellence</h4>
+          <p>Dedicated a portion of work time to Samsung-internal research initiatives and participated in internal professional programming competitions — maintaining high engineering standards and staying current with emerging platform capabilities. This cadence of structured research and competitive programming sharpened algorithmic problem-solving skills applied directly to SDK architecture decisions.</p>
         </div>
       </div>
     </div>
@@ -748,10 +923,30 @@
       <div class="pub fi">
         <span class="pub-yr">2025</span>
         <div>
+          <a href="https://arxiv.org/abs/2507.10127" target="_blank" class="pub-title">Taming Modern Point Tracking for Speckle Tracking Echocardiography via Impartial Motion</a>
+          <p class="pub-authors"><strong>Azad M.A.</strong>, Nyberg J., Dalen H., Grenne B., Lovstakken L., Østvik A.</p>
+          <div class="pub-venue">
+            <span class="badge badge-ws">ICCV 2025 Workshop</span>
+            <span class="badge-venue">CVAMD · Computer Vision for Automated Medical Diagnosis</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2507.10127" target="_blank" class="plink">📋 arXiv</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub fi">
+        <span class="pub-yr">2025</span>
+        <div>
           <a href="https://arxiv.org/abs/2503.10431" target="_blank" class="pub-title">Low Complexity Point Tracking of the Myocardium in 2D Echocardiography</a>
           <p class="pub-authors">Chernyshov A., Nyberg J., Holmstrøm V., <strong>Azad M.A.</strong>, Grenne B., Dalen H., Aase S.A., Lovstakken L., Østvik A.</p>
-          <div class="pub-venue"><span class="badge badge-pre">arXiv Preprint</span><span class="badge-venue">arXiv:2503.10431</span></div>
-          <div class="pub-links"><a href="https://arxiv.org/abs/2503.10431" target="_blank" class="plink">📄 arXiv</a></div>
+          <div class="pub-venue">
+            <span class="badge badge-journal">IEEE Access</span>
+            <span class="badge-venue">2025</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2503.10431" target="_blank" class="plink">📋 arXiv</a>
+          </div>
         </div>
       </div>
 
@@ -777,7 +972,10 @@
         <div>
           <a href="https://doi.org/10.1109/OCEANSLimerick52467.2023.10244578" target="_blank" class="pub-title">Multi-label Video Classification for Underwater Ship Inspection</a>
           <p class="pub-authors"><strong>Azad M.A.</strong>, Mohammed A., Waszak M., Elvesæter B., Ludvigsen M.</p>
-          <div class="pub-venue"><span class="badge badge-conf">OCEANS 2023</span><span class="badge-venue">Limerick, Ireland</span></div>
+          <div class="pub-venue">
+            <span class="badge badge-conf">OCEANS 2023</span>
+            <span class="badge-venue">Limerick, Ireland</span>
+          </div>
           <div class="pub-links">
             <a href="https://doi.org/10.1109/OCEANSLimerick52467.2023.10244578" target="_blank" class="plink">📄 Paper</a>
             <a href="https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3094213" target="_blank" class="plink">📖 Thesis</a>
@@ -790,8 +988,13 @@
         <div>
           <a href="https://link.springer.com/chapter/10.1007/978-981-15-9774-9_1" target="_blank" class="pub-title">Layered Ensemble Learning for Effective Binary Classification</a>
           <p class="pub-authors"><strong>Azad M.A.</strong>, Islam S., Farid D.M., Shatabda S.</p>
-          <div class="pub-venue"><span class="badge badge-conf">IEMIS 2020</span><span class="badge-venue">Springer Singapore</span></div>
-          <div class="pub-links"><a href="https://link.springer.com/chapter/10.1007/978-981-15-9774-9_1" target="_blank" class="plink">📄 Paper</a></div>
+          <div class="pub-venue">
+            <span class="badge badge-conf">IEMIS 2020</span>
+            <span class="badge-venue">Springer Singapore</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://link.springer.com/chapter/10.1007/978-981-15-9774-9_1" target="_blank" class="plink">📄 Paper</a>
+          </div>
         </div>
       </div>
 
@@ -800,8 +1003,13 @@
         <div>
           <a href="https://doi.org/10.1109/SKIMA47702.2019.8982419" target="_blank" class="pub-title">Big Data with Decision Tree Induction</a>
           <p class="pub-authors">Sabah S., Anwar S.Z.B., Afroze S., <strong>Azad M.A.</strong>, Shatabda S., Farid D.M.</p>
-          <div class="pub-venue"><span class="badge badge-conf">SKIMA 2019</span><span class="badge-venue">Maldives</span></div>
-          <div class="pub-links"><a href="https://doi.org/10.1109/SKIMA47702.2019.8982419" target="_blank" class="plink">📄 Paper</a></div>
+          <div class="pub-venue">
+            <span class="badge badge-conf">SKIMA 2019</span>
+            <span class="badge-venue">Maldives</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1109/SKIMA47702.2019.8982419" target="_blank" class="plink">📄 Paper</a>
+          </div>
         </div>
       </div>
 
@@ -831,12 +1039,23 @@
           </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
-            <div class="tl-date">Summer 2022</div>
-            <div class="tl-role">Research Intern — Computer Vision</div>
-            <div class="tl-org"><a href="https://www.sintef.no/en/digital/" target="_blank">SINTEF Digital</a> · Trondheim, Norway</div>
+            <div class="tl-date">Aug 2022 — Jun 2023</div>
+            <div class="tl-role">Master's Thesis Intern — Computer Vision</div>
+            <div class="tl-org"><a href="https://www.sintef.no/en/digital/" target="_blank">SINTEF Digital</a> · Oslo, Norway</div>
+            <div class="tl-desc"><ul>
+              <li>Multi-label video classification for underwater ship hull inspection</li>
+              <li>Designed MViST — a Vision Spatiotemporal Transformer for concurrent defect detection</li>
+              <li>Published at OCEANS 2023, Limerick (IEEE)</li>
+            </ul></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jun 2022 — Aug 2022</div>
+            <div class="tl-role">Summer Research Intern — Computer Vision</div>
+            <div class="tl-org"><a href="https://www.sintef.no/en/digital/" target="_blank">SINTEF Digital</a> · Oslo, Norway</div>
             <div class="tl-desc"><ul>
               <li>3D reconstruction of challenging objects using Neural Radiance Fields (NeRF)</li>
-              <li>Research directly led to master's thesis project</li>
+              <li>Part of the DeepStruct project — client: Zivid</li>
             </ul></div>
           </div>
           <div class="tl-item">
@@ -857,24 +1076,38 @@
         <div class="tl">
           <div class="tl-item">
             <div class="tl-dot"></div>
-            <div class="tl-date">2023 — Present</div>
-            <div class="tl-role">Ph.D. in Ultrasound Medical Imaging</div>
+            <div class="tl-date">Sep 2023 — 2026</div>
+            <div class="tl-role">Ph.D. in AI for Ultrasound Medical Imaging</div>
             <div class="tl-org">NTNU · Trondheim, Norway</div>
             <div class="tl-desc"><em>Thesis: Advancing Myocardial Function Imaging in Echocardiography using Vision Intelligence</em></div>
           </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
-            <div class="tl-date">2021 — 2023</div>
+            <div class="tl-date">Aug 2022 — Jun 2023</div>
             <div class="tl-role">M.Sc. Marine &amp; Maritime Intelligent Robotics</div>
-            <div class="tl-org">UTLN + NTNU · France &amp; Norway &nbsp;<span style="color:var(--accent);font-family:var(--mono);font-size:10.5px;border:1px solid rgba(100,255,218,.3);padding:1px 6px;border-radius:3px">Erasmus Mundus</span></div>
-            <div class="tl-desc"><em>Thesis: Multi-label Video Classification for Underwater Ship Inspection (SINTEF Digital)</em></div>
+            <div class="tl-org">NTNU · Trondheim, Norway &nbsp;<span style="color:var(--accent);font-family:var(--mono);font-size:10.5px;border:1px solid rgba(100,255,218,.3);padding:1px 6px;border-radius:3px">Erasmus Mundus · M2</span></div>
+            <div class="tl-desc"><em>Specialization: Deep Learning &amp; Computer Vision · Thesis: Multi-label Video Classification for Underwater Ship Inspection (SINTEF Digital)</em></div>
           </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
-            <div class="tl-date">2015 — 2019</div>
+            <div class="tl-date">Sep 2021 — Jun 2022</div>
+            <div class="tl-role">M.Sc. Engineering of Complex Systems</div>
+            <div class="tl-org">Université de Toulon · Toulon, France &nbsp;<span style="color:var(--accent);font-family:var(--mono);font-size:10.5px;border:1px solid rgba(100,255,218,.3);padding:1px 6px;border-radius:3px">Erasmus Mundus · M1</span></div>
+            <div class="tl-desc"><em>Specialization: AI — Deep / Machine / Reinforcement Learning</em></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Feb 2014 — May 2019</div>
             <div class="tl-role">B.Sc. Computer Science &amp; Engineering</div>
             <div class="tl-org">United International University · Dhaka, Bangladesh</div>
-            <div class="tl-desc">Erasmus Mundus exchange at Universität Bremen, Germany (10 months)</div>
+            <div class="tl-desc"><em>Major: Machine Learning &amp; Pattern Recognition</em></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Sep 2016 — Jul 2017</div>
+            <div class="tl-role">Erasmus Mundus Exchange &amp; Bachelor's Thesis</div>
+            <div class="tl-org">Universität Bremen · Bremen, Germany &nbsp;<span style="color:var(--accent);font-family:var(--mono);font-size:10.5px;border:1px solid rgba(100,255,218,.3);padding:1px 6px;border-radius:3px">Erasmus Mundus</span></div>
+            <div class="tl-desc"></div>
           </div>
         </div>
       </div>
@@ -893,6 +1126,13 @@
         <div>
           <div class="talk-title">EchoTracker: Advancing Myocardial Point Tracking in Echocardiography</div>
           <div class="talk-venue">CIUS Final Conference 2024 · Trondheim, Norway</div>
+        </div>
+      </div>
+      <div class="talk fi">
+        <div class="talk-date">Feb 2024</div>
+        <div>
+          <div class="talk-title">Speckle Tracking Echocardiography using Point Tracking: A Paradigm Shift?</div>
+          <div class="talk-venue">Leuven Meeting on Myocardial Function Imaging 2024 · KU Leuven, Belgium</div>
         </div>
       </div>
       <div class="talk fi">
@@ -926,8 +1166,9 @@
     <div class="sh"><span class="n">07.</span><h2>Get In Touch</h2></div>
     <div class="fi" style="text-align:center">
       <p class="contact-desc">
-        I'm always open to research collaborations, academic discussions, and new opportunities.
-        Whether you have a question or just want to say hello — feel free to reach out!
+        I'm always open to research collaborations, new opportunities, and conversations about
+        applying AI and computer vision to real-world industry challenges.
+        Whether you're building something exciting or just want to connect — feel free to reach out!
       </p>
       <a href="mailto:md.a.azad@ntnu.no" class="btn btn-ghost" style="margin:0 auto">Say Hello →</a>
       <div class="c-links">
