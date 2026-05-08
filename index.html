@@ -149,6 +149,20 @@
     .btn-ghost { background:transparent; color:var(--accent); border:1px solid var(--accent); }
     .btn-ghost:hover { background:var(--adim); color:var(--accent); transform:translateY(-2px); }
 
+    /* ── NEWS ── */
+    #news { background:var(--bg2); padding:40px 0; }
+    .news-feed { display:flex; flex-direction:column; gap:12px; }
+    .news-feed.collapsed .news-item:nth-child(n+5) { display:none; }
+    .news-toggle { display:flex; align-items:center; gap:8px; margin-top:10px; background:none; border:1px solid var(--border); color:var(--text3); font-family:var(--mono); font-size:13px; padding:8px 18px; border-radius:20px; cursor:pointer; transition:color .2s, border-color .2s; width:fit-content; }
+    .news-toggle:hover { color:var(--accent); border-color:var(--accent); }
+    .news-item { display:grid; grid-template-columns:100px 1fr; gap:20px; align-items:center; padding:16px 22px; font-size:15px; line-height:1.65; background:var(--card); border:1px solid var(--border); border-radius:var(--rl); transition:border-color .2s, box-shadow .2s; text-decoration:none; cursor:pointer; }
+    .news-item:hover { border-color:rgba(100,255,218,.3); box-shadow:0 4px 24px rgba(0,0,0,.3); }
+    .news-item--latest { font-size:16.5px; padding:20px 24px 20px 20px; border-left:3px solid rgba(255,209,102,.9); background:rgba(255,209,102,.04); border-color:rgba(255,209,102,.3); }
+    .news-item--latest:hover { border-color:rgba(255,209,102,.65); box-shadow:0 6px 32px rgba(0,0,0,.38); }
+    .news-item--latest .news-date { color:rgba(255,209,102,.9); }
+    .news-date { font-family:var(--mono); color:var(--accent); font-size:13px; font-weight:500; }
+    .news-body { color:var(--text2); }
+    .news-body strong { color:var(--white); }
     /* ── ABOUT ── */
     .about-grid { display:grid; grid-template-columns:3fr 2fr; gap:56px; align-items:start; }
     .about-text p { color:var(--text2); font-size:17px; line-height:1.85; margin-bottom:14px; }
@@ -365,6 +379,7 @@
   <div class="nav-i">
     <a href="#hero" class="nav-logo">&lt;azad/&gt;</a>
     <ul class="nav-links">
+      <li><a href="#news">News</a></li>
       <li><a href="#about"><span class="n">01.</span>About</a></li>
       <li><a href="#projects"><span class="n">02.</span>Projects</a></li>
       <li><a href="#research"><span class="n">03.</span>Research</a></li>
@@ -416,6 +431,51 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="wrap">
+    <div class="sh" style="margin-bottom:12px;"><h2>News <span style="font-size:0.5em;font-weight:400;color:var(--text3);font-family:var(--mono)">&amp; Updates</span></h2></div>
+    <div class="news-feed">
+      <a class="news-item news-item--latest fi" href="https://www.linkedin.com/posts/md-abulkalam-azad-10b81b105_miccai2026-medicalimaging-echocardiography-activity-7458292612307795968-fHKz?utm_source=share&utm_medium=member_desktop&rcm=ACoAABqjy9sBqQJ6A3NPZtpqS-WyWZHXOWBAfgg" target="_blank" rel="noopener">
+        <span class="news-date">May 2026</span>
+        <span class="news-body">
+          <span class="badge badge-top" style="margin-right:8px;">Early Accept · MICCAI 2026 · Top 9%</span>
+          <strong>EchoTracker2: Enhancing Myocardial Point Tracking by Modeling Local Motion</strong> accepted at <strong>MICCAI 2026</strong>.
+        </span>
+      </a>
+      <a class="news-item fi" href="https://www.linkedin.com/posts/md-abulkalam-azad-10b81b105_iccv2025-cvamd-computervision-activity-7385106982875054080-bGkt?utm_source=share&utm_medium=member_desktop&rcm=ACoAABqjy9sBqQJ6A3NPZtpqS-WyWZHXOWBAfgg" target="_blank" rel="noopener">
+        <span class="news-date">Oct 2025</span>
+        <span class="news-body">
+          <span class="badge badge-ws" style="margin-right:8px;">ICCV 2025 Workshop</span>
+          Presented <strong>Taming Modern Point Tracking for Speckle Tracking Echocardiography via Impartial Motion</strong> at the <strong>CVAMD Workshop</strong>, Honolulu, Hawaii.
+        </span>
+      </a>
+      <a class="news-item fi" href="https://www.linkedin.com/posts/md-abulkalam-azad-10b81b105_cotracker3-iccv2025-cvamd-activity-7350473602347036672-zF1o?utm_source=share&utm_medium=member_desktop&rcm=ACoAABqjy9sBqQJ6A3NPZtpqS-WyWZHXOWBAfgg" target="_blank" rel="noopener">
+        <span class="news-date">Jul 2025</span>
+        <span class="news-body">
+          <span class="badge badge-ws" style="margin-right:8px;">Accepted · CVAMD · ICCV 2025</span>
+          <strong>Taming Modern Point Tracking for Speckle Tracking Echocardiography via Impartial Motion</strong> accepted at <strong>ICCV 2025 CVAMD Workshop</strong> — the CVF journey begins.
+        </span>
+      </a>
+      <a class="news-item fi" href="https://www.linkedin.com/posts/md-abulkalam-azad-10b81b105_medicalimaging-ultrasoundai-speckletracking-activity-7295885305570586624-ov-1?utm_source=share&utm_medium=member_desktop&rcm=ACoAABqjy9sBqQJ6A3NPZtpqS-WyWZHXOWBAfgg" target="_blank" rel="noopener">
+        <span class="news-date">Feb 2025</span>
+        <span class="news-body">
+          <span class="badge badge-conf" style="margin-right:8px;">Invited Talk · KU Leuven</span>
+          Gave a lecture on <strong>Speckle Tracking Echocardiography using Point Tracking: A Paradigm Shift?</strong> at <strong>Myocardial Function Imaging 2025</strong>, KU Leuven, Belgium.
+        </span>
+      </a>
+      <a class="news-item fi" href="https://www.linkedin.com/posts/andreas-%C3%B8stvik-29359a148_miccai2024-ugcPost-7249894183925153792-oYKe?utm_source=share&utm_medium=member_desktop&rcm=ACoAABqjy9sBqQJ6A3NPZtpqS-WyWZHXOWBAfgg" target="_blank" rel="noopener">
+        <span class="news-date">Oct 2024</span>
+        <span class="news-body">
+          <span class="badge badge-conf" style="margin-right:8px;">MICCAI 2024</span>
+          Presented <strong>EchoTracker: Advancing Myocardial Point Tracking in Echocardiography</strong> at <strong>MICCAI 2024</strong>, Marrakesh, Morocco.
+        </span>
+      </a>
+    </div>
+    <button class="news-toggle" id="news-toggle">Show more ↓</button>
   </div>
 </section>
 
@@ -1122,17 +1182,24 @@
     <div class="sh"><span class="n">06.</span><h2>Talks</h2></div>
     <div class="talks">
       <div class="talk fi">
+        <div class="talk-date">Feb 2025</div>
+        <div>
+          <div class="talk-title">Speckle Tracking Echocardiography using Point Tracking: A Paradigm Shift?</div>
+          <div class="talk-venue">Myocardial Function Imaging 2025 · KU Leuven, Belgium</div>
+        </div>
+      </div>
+      <div class="talk fi">
+        <div class="talk-date">Oct 2024</div>
+        <div>
+          <div class="talk-title">EchoTracker: Advancing Myocardial Point Tracking in Echocardiography</div>
+          <div class="talk-venue">MICCAI 2024 · Marrakesh, Morocco</div>
+        </div>
+      </div>
+      <div class="talk fi">
         <div class="talk-date">Mar 2024</div>
         <div>
           <div class="talk-title">EchoTracker: Advancing Myocardial Point Tracking in Echocardiography</div>
           <div class="talk-venue">CIUS Final Conference 2024 · Trondheim, Norway</div>
-        </div>
-      </div>
-      <div class="talk fi">
-        <div class="talk-date">Feb 2024</div>
-        <div>
-          <div class="talk-title">Speckle Tracking Echocardiography using Point Tracking: A Paradigm Shift?</div>
-          <div class="talk-venue">Leuven Meeting on Myocardial Function Imaging 2024 · KU Leuven, Belgium</div>
         </div>
       </div>
       <div class="talk fi">
@@ -1270,6 +1337,21 @@
         card.style.zIndex    = '';
         card.style.boxShadow = '';
       });
+    });
+  }());
+
+  // News feed show more / show less
+  (function initNewsFeed() {
+    const feed = document.querySelector('.news-feed');
+    const btn  = document.getElementById('news-toggle');
+    if (!feed || !btn) return;
+    const total  = feed.querySelectorAll('.news-item').length;
+    const limit  = 4;
+    if (total <= limit) { btn.style.display = 'none'; return; }
+    feed.classList.add('collapsed');
+    btn.addEventListener('click', () => {
+      const collapsed = feed.classList.toggle('collapsed');
+      btn.textContent = collapsed ? `Show more ↓` : `Show less ↑`;
     });
   }());
 </script>
